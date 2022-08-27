@@ -1,5 +1,5 @@
-const startUpDebugger = require("debug")("app:startup");
-const dbDebugger = require("debug")("app:db");
+const debug = require("debug")("app:startup");
+
 const config = require("config");
 const morgan = require("morgan");
 const helmet = require("helmet");
@@ -22,10 +22,8 @@ console.log("Male server", config.get("mail.host"));
 
 if (app.get("env") === "development") {
   app.use(morgan("tiny"));
-  startUpDebugger("Morgan enabled");
+  debug("Morgan enabled");
 }
-
-dbDebugger("connectedt to db");
 
 app.use(authenticate);
 const courses = [
