@@ -1,3 +1,5 @@
+const morgan = require("morgan");
+const helmet = require("helmet");
 const Joi = require("joi");
 const express = require("express");
 const logger = require("./logger");
@@ -8,6 +10,8 @@ app.use(express.json()); //to enable parsing of json objects
 app.use(express.urlencoded({ extended: true })); //parses incoming requests with url incoming payloads i.e. key=value&key=value2
 app.use(express.static("public"));
 app.use(logger);
+app.use(helmet());
+app.use(morgan());
 
 app.use(authenticate);
 const courses = [
