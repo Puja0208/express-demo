@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true })); //parses incoming requests with
 app.use(express.static("public"));
 app.use(logger);
 app.use(helmet());
-app.use(morgan());
+app.use(morgan("tiny"));
 
 app.use(authenticate);
 const courses = [
