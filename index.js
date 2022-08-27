@@ -11,7 +11,11 @@ app.use(express.urlencoded({ extended: true })); //parses incoming requests with
 app.use(express.static("public"));
 app.use(logger);
 app.use(helmet());
-app.use(morgan("tiny"));
+
+if (app.get("env") === "development") {
+  app.use(morgan("tiny"));
+  console.log("Morgan enabled");
+}
 
 app.use(authenticate);
 const courses = [
