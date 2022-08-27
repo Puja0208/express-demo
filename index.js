@@ -1,3 +1,5 @@
+const startUpDebugger = require("debug")("app:startup");
+const dbDebugger = require("debug")("app:db");
 const config = require("config");
 const morgan = require("morgan");
 const helmet = require("helmet");
@@ -16,12 +18,14 @@ app.use(helmet());
 //configuration
 console.log("Applicatio name", config.get("name"));
 console.log("Male server", config.get("mail.host"));
-console.log("Male server password", config.get("mail.password"));
+// console.log("Male server password", config.get("mail.password"));
 
 if (app.get("env") === "development") {
   app.use(morgan("tiny"));
-  console.log("Morgan enabled");
+  startUpDebugger("Morgan enabled");
 }
+
+dbDebugger("connectedt to db");
 
 app.use(authenticate);
 const courses = [
