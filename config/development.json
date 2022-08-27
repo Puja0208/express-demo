@@ -1,0 +1,6 @@
+{
+    "name": "My Expres App - Developmet",
+    "mail":{
+        "host":"dev-mail-server"
+    }
+}
