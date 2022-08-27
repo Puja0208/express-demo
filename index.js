@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json()); //to enable parsing of json objects
 app.use(express.urlencoded({ extended: true })); //parses incoming requests with url incoming payloads i.e. key=value&key=value2
-
+app.use(express.static("public"));
 app.use(logger);
 
 app.use(authenticate);
